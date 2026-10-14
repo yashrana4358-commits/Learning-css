@@ -1,0 +1,50 @@
+/* Remove default spacing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Full-screen page */
+body {
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    font-family: "Times New Roman", serif;
+}
+
+/* Image covers the entire screen */
+.background {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.name-grid {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    padding: clamp(12px, 2vw, 32px);   /* gap from the screen edge */
+    color: rgb(3, 246, 84);
+    font-size: clamp(1rem, 2.5vw, 1.75rem);
+    font-weight: bold;
+    white-space: nowrap;
+    text-shadow: 0 1px 4px rgb(0 0 0 / 90%);
+}
+
+/* Columns: left, center, right */
+.name-grid div:nth-child(3n+1) { justify-self: start; }
+.name-grid div:nth-child(3n+2) { justify-self: center; }
+.name-grid div:nth-child(3n)   { justify-self: end; }
+
+/* Rows: top, middle, bottom */
+.name-grid div:nth-child(-n+3)               { align-self: start; }
+.name-grid div:nth-child(n+4):nth-child(-n+6) { align-self: center; }
+.name-grid div:nth-child(n+7)                { align-self: end; }
